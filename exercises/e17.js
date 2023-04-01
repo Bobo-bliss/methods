@@ -9,13 +9,53 @@
  */
 
 export function minBy(array, cb) {
-  // Your code goes here...
+    // Your code goes here...
+    if (array.length === 0) {
+        return undefined;
+     }
 
+    let objects = [];
+    for (let obj of array) {
+        if (cb(obj)) {
+            objects.push(obj);
+        }
+    }
+  
+    let minObj = objects[0];
+    let minValue = cb(minObj)
+    for (let i = 1; i < objects.length; i++) {
+        const currentValue = cb(objects[i]);
+        if (currentValue < minValue) {
+            minValue = currentValue;
+            minObj = objects[i];
+        }
+    }
+    return minObj;
 }
-
+  
 export function maxBy(array, cb) {
-  // Your code goes here...
+    // Your code goes here...
+    if (array.length === 0) {
+        return undefined;
+     }
 
+    let objects = [];
+    for (let obj of array) {
+        if (cb(obj)) {
+            objects.push(obj);
+        }
+    }
+  
+    let maxObj = objects[0];
+    let maxValue = cb(maxObj);
+    for (let i = 1; i < objects.length; i++) {
+        const currentValue = cb(objects[i]);
+        if (currentValue > maxValue) {
+            maxValue = currentValue;
+            maxObj = objects[i];
+        }
+    }
+    return maxObj;
 }
 
 
